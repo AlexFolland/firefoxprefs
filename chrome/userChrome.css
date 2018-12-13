@@ -3,7 +3,7 @@
 #tabbrowser-tabs .tabbrowser-tab .tab-close-button { display:none!important; }
 
 .tabbrowser-tab:not([pinned]) {
-	max-width: 1080px !important;
+	max-width: 32767px !important;
 	min-width: 5px !important;
 }
 
@@ -18,88 +18,8 @@
 	width: 0 !important;
 }
 
-#tabbrowser-tabs {width:100%;}
-/*.tabbrowser-tab:not([pinned]) {min-width:1080px;max-width:1080px !important;}
-.tabbrowser-tab {width:100%;height:var(--tab-min-height);}
-.tab-background {width:100%;height:var(--tab-min-height);}
-.tab-stack {width: 100%;}
-#tabbrowser-tabs .scrollbox-innerbox {display: flex;flex-wrap: wrap;width:100%;}
-#tabbrowser-tabs .arrowscrollbox-scrollbox {overflow: visible;display: block;}
-#titlebar,#titlebar-buttonbox{height:var(--tab-min-height) !important;}
-#titlebar{margin-bottom:calc(var(--tab-min-height)*-1) !important;}
-#main-window[sizemode="maximized"] #titlebar{margin-bottom:calc(6px + var(--tab-min-height)*-1) !important;}
-#main-window[sizemode="maximized"] #TabsToolbar{margin-left:var(--tab-min-height);}
-#titlebar:active{margin-bottom:0 !important;}
-#titlebar:active #titlebar-content{margin-bottom:var(--tab-min-height) !important;}
-#tabbrowser-tabs .scrollbutton-up,.tabbrowser-tabs .scrollbutton-down,#alltabs-button,.tabbrowser-tab:not([fadein]){display: none;}
-*/
-
-/* Tab bar below Navigation & Bookmarks Toolbars */
-#nav-bar { /* main toolbar */
-	-moz-box-ordinal-group: 1 !important;
-	box-shadow: none !important;
-}
-#PersonalToolbar { /* bookmarks toolbar */
-	-moz-box-ordinal-group: 2 !important;
-}
-#TabsToolbar { /* tab bar */
-	-moz-box-ordinal-group: 3 !important;
-	padding-top: 0 !important;
-}
-/* Clean up spacing */
-.titlebar-placeholder {
-	display: none !important;
-}
-toolbarbutton.bookmark-item {
-	padding-top: 2px !important;
-	padding-bottom: 2px !important;
-}
-
-/* Vertical space for min/max/close buttons above the main toolbar */
-/* On Mac, if not showing title bar, allow 20 pixels */
-#main-window[tabsintitlebar="true"]:not([inFullscreen="true"]) #toolbar-menubar:not([accesskey]) ~  #nav-bar {
-	margin-top: 20px !important;
-}
-/* On Windows, if not showing title bar or menu bar, allow 20 pixels */
-#main-window[tabsintitlebar="true"] #toolbar-menubar[autohide="true"][inactive="true"] ~ #nav-bar {
-	margin-top: 20px !important; /* More px may be better on Win10 */
-}
-/* Sorry, Linux users, I don't know the best approach for you! */
-
-/* Background for Light and Dark themes */
-#main-window[lwthemetextcolor="bright"] #TabsToolbar, 
-#main-window[lwthemetextcolor="dark"] #TabsToolbar {
-	background-color: var(--chrome-secondary-background-color) !important;
-	background-image: none !important;
-}
-#main-window[lwthemetextcolor="dark"] .scrollbutton-up,
-#main-window[lwthemetextcolor="dark"] .scrollbutton-down,
-#main-window[lwthemetextcolor="dark"] .tabs-newtab-button,
-#main-window[lwthemetextcolor="dark"] #new-tab-button,
-#main-window[lwthemetextcolor="dark"] #alltabs-button {
-	fill: var(--lwt-text-color) !important;
-}
-/* Left and right borders on Win 7 & 8, but not on 10 and later: */
-@media (-moz-os-version: windows-win7), (-moz-os-version: windows-win8) {
-	/* Vertical toolbar border */
-	#main-window[sizemode=normal] #navigator-toolbox > toolbar#TabsToolbar {
-	border-left: 1px solid hsla(240,5%,5%,0.3) !important;;
-	border-right: 1px solid hsla(240,5%,5%,0.3) !important;;
-	background-clip: padding-box;
-	}
-}
-
-/* Override vertical shifts when moving a tab (9 Jan 2018) */
-#TabsToolbar[movingtab] {
-	padding-bottom: 0 !important;
-}
-#TabsToolbar[movingtab] > .tabbrowser-tabs {
-	padding-bottom: 0 !important;
-	margin-bottom: 0 !important;
-}
-#TabsToolbar[movingtab] + #nav-bar {
-	margin-top: 0 !important;
-}
+/*don't wimp out on tab width*/
+#tabbrowser-tabs {width:100% !important;}
 
 /* MAIN TOOLBAR AND BOOKMARKS TOOLBAR MODIFICATIONS */
 /* Transparent toolbars */
@@ -114,37 +34,57 @@ toolbarbutton.bookmark-item {
 	border-top: none !important;
 }
 
-:root{--toolbar-height:24px;}
-[uidensity="compact"]:root{--toolbar-height:24px;}
-[uidensity="touch"]:root{--toolbar-height:44px;}
-#TabsToolbar{-moz-box-ordinal-group:2}
-#toolbar-menubar,#nav-bar{
-	height:var(--toolbar-height);
-	position:relative
+:root{--toolbar-height:24px !important;}
+/*#TabsToolbar{-moz-box-ordinal-group:2}*/
+#TabsToolbar,#menubar-items,#toolbar-menubar,#nav-bar,#toolbar-context-menu
+#TabsToolbar[movingtab],#menubar-items[movingtab],#toolbar-menubar[movingtab],#nav-bar[movingtab],#toolbar-context-menu[movingtab]{
+	height:var(--toolbar-height) !important;
+  /*position:relative;*/
 }
-#nav-bar{
-	margin:calc(-1 * var(--toolbar-height)) 130px 0 300px;
+
+#toolbar-menubar{padding:0;z-index:0;pointer-events:none;height:var(--toolbar-height) !important}
+#menubar-items{pointer-events: auto}
+/*#back-button,#forward-button,#reload-button,#new-tab-button,
+#history-menu,#undo-close-tab-buttons-single_codefisher_org-browser-action
+{z-index:5 !important;}*/
+/*#forward-button{margin-right:300px;}*/
+#navigator-toolbox{background-color:var(--chrome-secondary-background-color)}
+
+#nav-bar,#nav-bar[movingtab]{
+	margin:calc(-2.5 * var(--toolbar-height)) 0px calc(1.5 * var(--toolbar-height)) 300px;
+	padding: 0px 0px 0px 0px !important;
+	/*z-index: 0 !important;*/
 	/*margin-left:calc(36px + 4 * var(--toolbarbutton-inner-padding) + 4 * var(--toolbarbutton-outer-padding));*/
 }
-#toolbar-menubar{
-	padding:0;
-	z-index:2;
-	pointer-events:none
+
+#TabsToolbar,#TabsToolbar[movingtab]{
+	margin,padding,border:0px 0px 0px 0px !important;
+	height: var(--toolbar-height) !important;
+	z-index: 0 !important;
 }
-#menubar-items{pointer-events: auto}
-#forward-button{margin-right:300px;}
-#navigator-toolbox{background-color:var(--chrome-secondary-background-color)}
+
+/* Override vertical shifts when moving a tab (9 Jan 2018) */
+#TabsToolbar[movingtab] {
+	padding-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] > .tabbrowser-tabs {
+	padding-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+#TabsToolbar[movingtab] + #nav-bar {
+	margin-top: 0 !important;
+}
 
 
 /* hide tab bar with only 1 tab */
 
-#tabbrowser-tabs, #tabbrowser-tabs > .tabbrowser-arrowscrollbox {
+/*#tabbrowser-tabs, #tabbrowser-tabs > .tabbrowser-arrowscrollbox {
 min-height: 0 !important;
 }
 
 #tabbrowser-tabs tab[first-visible-tab="true"][last-visible-tab="true"] {
 visibility: collapse;
-}
+}*/
 
 /* I don't use tabs so I just hide the new tab button. You should be able to use a similar trick as the rule above with
 css siblings selectors if you want to keep it when the tab bar is visible. */
