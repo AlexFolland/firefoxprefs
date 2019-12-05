@@ -1,4 +1,4 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+/*@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
 
 #tabbrowser-tabs .tabbrowser-tab .tab-close-button { display:none!important; }
 
@@ -34,7 +34,7 @@
 	border-top: none !important;
 }
 
-:root{--toolbar-height:24px !important;}
+*|*:root{--toolbar-height:24px !important;}
 /*#TabsToolbar{-moz-box-ordinal-group:2}*/
 #TabsToolbar,#menubar-items,#toolbar-menubar,#nav-bar,#toolbar-context-menu
 #TabsToolbar[movingtab],#menubar-items[movingtab],#toolbar-menubar[movingtab],#nav-bar[movingtab],#toolbar-context-menu[movingtab]{
