@@ -60,7 +60,7 @@
 #navigator-toolbox{background-color:var(--chrome-secondary-background-color)}
 
 #nav-bar,#nav-bar[movingtab]{
-	margin: calc(-2 * var(--toolbar-height)) 0px var(--toolbar-height) 300px;
+	margin: calc(-2 * var(--toolbar-height)) 0px var(--toolbar-height) 337px;
 	padding: 0px 0px 0px 0px !important;
 	/*z-index: 0 !important;*/
 	/*margin-left:calc(36px + 4 * var(--toolbarbutton-inner-padding) + 4 * var(--toolbarbutton-outer-padding));*/
@@ -108,15 +108,23 @@ min-height: 0 !important;
 visibility: collapse;
 }*/
 
-#nav-bar > hbox > toolbarbutton{
-	padding:0px;
-	padding-top: 3px !important;
-	padding-bottom: 3px !important;
+#nav-bar > hbox > toolbarbutton,.toolbarbutton-badge-stack,.toolbarbutton-icon{
+	padding: 0px !important;
 	margin: 0px !important;
-	min-height: 5px !important;
+	border: 0px !important;
+	min-height: var(--toolbar-height) !important;
 	max-height: var(--toolbar-height) !important;
-	min-width: 5px !important;
+	min-width: var(--toolbar-height) !important;
 	max-width: var(--toolbar-height) !important;
 }
-.toolbarbutton-icon {padding:0px!important;margin:0px!important;border:0px!important;}
-/*#nav-bar > hbox > toolbarbutton > .toolbarbutton-icon {padding-left:0px!important; padding-right:0px!important}*/
+.toolbarbutton-1,menu,.menubar-text,#urlbar{padding:0px!important;margin:0px!important;border:0px!important;}
+
+#urlbar-container,#search-container{
+	padding: 0px !important;
+	margin: 0px !important;
+	border: 0px !important;
+	min-height: var(--toolbar-height) !important;
+	max-height: var(--toolbar-height) !important;
+	min-width: var(--toolbar-height) !important;
+}
+/*#nav-bar > hbox > toolbarbutton > .toolbarbutton-icon {padding:0px!important;}*/
