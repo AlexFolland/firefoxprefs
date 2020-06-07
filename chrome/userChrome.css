@@ -144,3 +144,15 @@ menu,menuitem{
 }
 
 /*#nav-bar > hbox > toolbarbutton > .toolbarbutton-icon {padding:0px!important;}*/
+
+/* NO ANIMATIONS */
+* {
+	animation-delay: 0ms !important;
+	animation-duration: 0ms !important;
+	transition: none !important;
+}
+
+/* hide stupid stuff */
+.tabbrowser-arrowscrollbox,.scrollbutton-up,.tabbrowser-arrowscrollbox,.scrollbutton-down,#scrollbutton-down,#scrollbutton-up,#alltabs-button{
+	display: none !important;
+}
