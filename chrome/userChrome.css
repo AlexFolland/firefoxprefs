@@ -60,7 +60,7 @@
 #navigator-toolbox{background-color:var(--chrome-secondary-background-color)}
 
 #nav-bar,#nav-bar[movingtab]{
-	margin: calc(-2 * var(--toolbar-height)) 0px var(--toolbar-height) 337px;
+	margin: calc(-2 * var(--toolbar-height)) 0px var(--toolbar-height) 234px;
 	padding: 0px 0px 0px 0px !important;
 	/*z-index: 0 !important;*/
 	/*margin-left:calc(36px + 4 * var(--toolbarbutton-inner-padding) + 4 * var(--toolbarbutton-outer-padding));*/
@@ -117,7 +117,22 @@ visibility: collapse;
 	min-width: var(--toolbar-height) !important;
 	max-width: var(--toolbar-height) !important;
 }
-.toolbarbutton-1,menu,.menubar-text,#urlbar{padding:0px!important;margin:0px!important;border:0px!important;}
+.toolbarbutton-1,menu,#urlbar{padding:0px!important;margin:0px!important;border:0px!important;}
+
+menu,menuitem{
+	padding: 0px !important;
+	margin: 0px !important;
+	border: 0px !important;
+	min-height: var(--toolbar-height) !important;
+	max-height: var(--toolbar-height) !important;
+	min-width: var(--toolbar-height) !important;
+}
+
+.menubar-text{
+	padding:0px 1px 0px 1px!important;
+	margin:0px!important;
+	border:0px!important;
+}
 
 #urlbar-container,#search-container{
 	padding: 0px !important;
@@ -127,4 +142,17 @@ visibility: collapse;
 	max-height: var(--toolbar-height) !important;
 	min-width: var(--toolbar-height) !important;
 }
+
 /*#nav-bar > hbox > toolbarbutton > .toolbarbutton-icon {padding:0px!important;}*/
+
+/* NO ANIMATIONS */
+* {
+	animation-delay: 0ms !important;
+	animation-duration: 0ms !important;
+	transition: none !important;
+}
+
+/* hide stupid stuff */
+.tabbrowser-arrowscrollbox,.scrollbutton-up,.tabbrowser-arrowscrollbox,.scrollbutton-down,#scrollbutton-down,#scrollbutton-up,#alltabs-button{
+	display: none !important;
+}
